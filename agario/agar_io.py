@@ -158,18 +158,30 @@ def play():
                            turtle.write('you failed!',move=False,align='center',font=('Ariel',60,'normal'))
                            running == False
                            break
-##         answer = input('would you like to restart?')
-##         if answer == 'yes':
-##                  running = True
-##                  for i in BALLS:
-##                           i.new_ball(x,y,dx,dy,r,color)
-##                  my_ball.new_ball(x,y,dx,dy,r,color)
-##                           
-##                  
-##                  play()
-##                  
-##         else:
-##                  quit()
+         answer = input('would you like to restart?')
+         if answer == 'yes':
+                  running = True
+                  for i in BALLS:
+
+                           x = random.randint(-screen_width + maximum_ball_radius , screen_width - maximum_ball_radius)
+                           y = random.randint(-screen_height + maximum_ball_radius , screen_height - maximum_ball_radius)
+                           dx = random.randint(minimum_ball_dx , maximum_ball_dx)
+                           while (dx == 0):
+                                    dx = random.randint(minimum_ball_dx , maximum_ball_dx)
+                                              
+                           dy = random.randint(minimum_ball_dy , maximum_ball_dy)
+                           while (dy == 0):
+                                    dy = random.randint(minimum_ball_dy , maximum_ball_dy)
+                           r = random.randint(minimum_ball_radius , maximum_ball_radius)
+                           color = (random.random(), random.random(), random.random())
+                           i.new_ball(x,y,dx,dy,r,color)
+                  my_ball.new_ball(x,y,dx,dy,r,color)
+                  turtle.clear()
+                  
+                  play()
+                  
+         else:
+                  quit()
 
 
 play()
